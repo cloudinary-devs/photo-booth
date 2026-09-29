@@ -1,46 +1,27 @@
-# Astro Starter Kit: Basics
+# Calavera Cabina
+
+A responsive Día de Muertos photo booth built with Astro. Guests can take a webcam selfie, select a portrait style, then generate and download a Cloudinary portrait saved to the account's Media Library.
+
+## Cloudinary setup
+
+1. In Cloudinary Console, enable the **Image Generation** add-on.
+2. Add `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` to the workspace-root `.env` file, or use Cloudinary's `CLOUDINARY_URL` connection string. The variable names are in `.env.example`. Keep these values server-side; do not prefix them with `PUBLIC_`.
+3. Run the booth over `localhost` or HTTPS to allow webcam access.
+
+The generation endpoint uploads the selected image securely, uses it as a reference for Cloudinary's image-to-image API, and saves the generated portrait as a managed asset under `calavera-cabina/portraits/`. The uploaded source photo is deleted after generation; the generated portrait remains in the Media Library.
+
+## Development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npx astro dev --background
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Manage the background server with `npx astro dev stop`, `npx astro dev status`, and `npx astro dev logs`.
 
-## 🚀 Project Structure
+## Build
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run preview
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
